@@ -1,0 +1,37 @@
+/*
+ *  Component declaration of EntropySource
+ *
+ *  Copyright (C) 2020, Hensoldt Cyber GmbH
+ */
+
+//------------------------------------------------------------------------------
+// Component
+
+#define DECLARE_COMPONENT_EntropySource(_name_) \
+    \
+    component _name_ { \
+        provides  if_OS_EntropySource       entropySource_rpc; \
+        dataport  Buf                       entropySource_dp; \
+    }
+
+
+//------------------------------------------------------------------------------
+// Instance Connection
+
+#define DECLARE_AND_CONNECT_INSTANCE_EntropySource( \
+    _name_, \
+    _inst_, \
+    _caller_rpc_, \
+    _caller_dp_) \
+    \
+    component   _name_ _inst_; \
+    connection  seL4RPCCall \
+        _name_ ## _ ## _inst_ ## _rpc   ( \
+            from    _caller_rpc_, \
+            to      _inst_.entropySource_rpc \
+        ); \
+    connection seL4SharedData \
+        _name_ ## _ ## _inst_ ## _dp ( \
+            from    _caller_dp_, \
+            to      _inst_.entropySource_dp \
+        );
