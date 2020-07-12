@@ -37,7 +37,10 @@ set(ENTROPYSOURCE_DIR ${CMAKE_CURRENT_LIST_DIR})
 #   LIBS <lib_1> <lib_2> ...
 #     optional, override dummy includes
 #
-function(DeclareCAmkESComponent_EntropySource name)
+function(DeclareCAmkESComponent_EntropySource
+    name
+    # ...
+)
 
     # Let caller override any of the build options with his own variables
     cmake_parse_arguments(
