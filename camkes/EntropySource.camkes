@@ -10,8 +10,8 @@
 #define DECLARE_COMPONENT_EntropySource(_name_) \
     \
     component _name_ { \
-        provides  if_OS_Entropy             entropySource_rpc; \
-        dataport  Buf                       entropySource_dp; \
+        provides  if_OS_Entropy             entropy_rpc; \
+        dataport  Buf                       entropy_port; \
     }
 
 
@@ -28,10 +28,10 @@
     connection  seL4RPCCall \
         _name_ ## _ ## _inst_ ## _rpc   ( \
             from    _caller_rpc_, \
-            to      _inst_.entropySource_rpc \
+            to      _inst_.entropy_rpc \
         ); \
     connection seL4SharedData \
         _name_ ## _ ## _inst_ ## _dp ( \
             from    _caller_dp_, \
-            to      _inst_.entropySource_dp \
+            to      _inst_.entropy_port \
         );
