@@ -1,5 +1,5 @@
 #
-# Makefile of EntropySource
+# EntropySource driver
 #
 # Copyright (C) 2020, Hensoldt Cyber GmbH
 #
