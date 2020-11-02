@@ -29,7 +29,7 @@ cmake_minimum_required(VERSION 3.17)
 #   LIBS <lib_1> <lib_2> ...
 #     optional, override dummy includes
 #
-function(DeclareCAmkESComponent_EntropySource
+function(EntropySource_DeclareCAmkESComponent
     name
     # ...
 )
