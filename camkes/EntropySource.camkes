@@ -1,13 +1,23 @@
 /*
- *  Component declaration of EntropySource
+ * Copyright (C) 2020, Hensoldt Cyber GmbH
+ */
+
+/*
+ *  EntropySource CAmkES Component
  *
- *  Copyright (C) 2020, Hensoldt Cyber GmbH
+ *  to be used as:
+ *
+ *      #include "EntropySource/camkes/EntropySource.camkes"
+ *
+ *      EntropySource_COMPONENT_DECLARE(EntropySource)
+ *
  */
 
 //------------------------------------------------------------------------------
-// Component
 
-#define DECLARE_COMPONENT_EntropySource(_name_) \
+
+#define EntropySource_COMPONENT_DECLARE( \
+    _name_) \
     \
     component _name_ { \
         provides  if_OS_Entropy             entropy_rpc; \
@@ -16,22 +26,29 @@
 
 
 //------------------------------------------------------------------------------
-// Instance Connection
 
-#define DECLARE_AND_CONNECT_INSTANCE_EntropySource( \
-    _name_, \
+
+/*
+ * Connect a client to the EntropySource via this macro:
+ *
+ *      EntropySource_INSTANCE_CONNECT_CLIENT(
+ *          <instance>,
+ *          <client>.<rpc>, <client>.<port>
+ *      )
+ *
+ */
+#define EntropySource_INSTANCE_CONNECT_CLIENT( \
     _inst_, \
-    _caller_rpc_, \
-    _caller_dp_) \
+    _rpc_, \
+    _port_) \
     \
-    component   _name_ _inst_; \
-    connection  seL4RPCCall \
-        _name_ ## _ ## _inst_ ## _rpc   ( \
-            from    _caller_rpc_, \
+    connection seL4RPCCall \
+        _inst_ ## _entropySource_rpc( \
+            from    _rpc_, \
             to      _inst_.entropy_rpc \
         ); \
     connection seL4SharedData \
-        _name_ ## _ ## _inst_ ## _dp ( \
-            from    _caller_dp_, \
+        _inst_ ## _entropySource_port( \
+            from    _port_, \
             to      _inst_.entropy_port \
         );
