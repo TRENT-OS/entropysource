@@ -9,14 +9,14 @@
  *
  *      #include "EntropySource/camkes/EntropySource.camkes"
  *
- *      EntropySource_COMPONENT_DECLARE(EntropySource)
+ *      EntropySource_COMPONENT_DEFINE(EntropySource)
  *
  */
 
 //------------------------------------------------------------------------------
 
 
-#define EntropySource_COMPONENT_DECLARE( \
+#define EntropySource_COMPONENT_DEFINE( \
     _name_) \
     \
     component _name_ { \
