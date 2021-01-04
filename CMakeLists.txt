@@ -68,7 +68,6 @@ function(EntropySource_DeclareCAmkESComponent
     if(NOT DEFINED ENTROPYSOURCE_LIBS)
         set(ENTROPYSOURCE_LIBS
             "os_core_api"
-            "os_libs"
         )
     endif(NOT DEFINED ENTROPYSOURCE_LIBS)
 
